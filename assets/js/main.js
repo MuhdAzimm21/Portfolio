@@ -305,10 +305,18 @@ document.addEventListener('DOMContentLoaded', function () {
   const periodBadges = document.querySelectorAll('.period-badge');
   let totalMonths = 0;
 
+  const monthMap = {
+    January: 0, February: 1, March: 2, April: 3,
+    May: 4, June: 5, July: 6, August: 7,
+    September: 8, October: 9, November: 10, December: 11,
+  };
+
   const parseDate = (str) => {
     if (str === 'Present') return new Date();
-    const [month, year] = str.split(' ');
-    return new Date(`${year}-${month}-01`);
+    const [monthName, year] = str.split(' ');
+    const month = monthMap[monthName];
+    if (month === undefined || !year) return null;
+    return new Date(parseInt(year), month, 1); // reliable everywhere
   };
 
   periodBadges.forEach((badge) => {
@@ -318,11 +326,12 @@ document.addEventListener('DOMContentLoaded', function () {
     const startDate = parseDate(start);
     const endDate = parseDate(end);
 
-    if (isNaN(startDate) || isNaN(endDate)) return; // skip invalid
+    if (!startDate || !endDate || isNaN(startDate) || isNaN(endDate)) return;
 
     const months =
       (endDate.getFullYear() - startDate.getFullYear()) * 12 +
       (endDate.getMonth() - startDate.getMonth());
+
     totalMonths += months;
   });
 
@@ -330,7 +339,10 @@ document.addEventListener('DOMContentLoaded', function () {
     ? `${totalMonths} Months`
     : `${Math.floor(totalMonths / 12)} Year${Math.floor(totalMonths / 12) > 1 ? 's' : ''}`;
 
-  document.getElementById('experience').textContent = totalMonths < 12 ? totalMonths : Math.floor(totalMonths / 12);
-  document.getElementById('experience-label').textContent = totalMonths < 12 ? 'Months' : 'Years';
+  document.getElementById('experience').textContent =
+    totalMonths < 12 ? totalMonths : Math.floor(totalMonths / 12);
+  document.getElementById('experience-label').textContent =
+    totalMonths < 12 ? 'Months' : 'Years';
   document.getElementById('details-experience').textContent = experienceText;
 });
+
