@@ -305,30 +305,32 @@ document.addEventListener('DOMContentLoaded', function () {
   const periodBadges = document.querySelectorAll('.period-badge');
   let totalMonths = 0;
 
+  const parseDate = (str) => {
+    if (str === 'Present') return new Date();
+    const [month, year] = str.split(' ');
+    return new Date(`${year}-${month}-01`);
+  };
+
   periodBadges.forEach((badge) => {
     const periodText = badge.textContent.trim();
     const [start, end] = periodText.split(' - ');
 
-    // Parse the start and end dates
-    const startDate = new Date(start);
-    const endDate = end === 'Present' ? new Date() : new Date(end);
+    const startDate = parseDate(start);
+    const endDate = parseDate(end);
 
-    // Calculate the difference in months
+    if (isNaN(startDate) || isNaN(endDate)) return; // skip invalid
+
     const months =
       (endDate.getFullYear() - startDate.getFullYear()) * 12 +
       (endDate.getMonth() - startDate.getMonth());
     totalMonths += months;
   });
 
-  // Convert total months to years or display months if less than 12
   const experienceText = totalMonths < 12
     ? `${totalMonths} Months`
     : `${Math.floor(totalMonths / 12)} Year${Math.floor(totalMonths / 12) > 1 ? 's' : ''}`;
 
-  // Update the "stat-item" section
   document.getElementById('experience').textContent = totalMonths < 12 ? totalMonths : Math.floor(totalMonths / 12);
   document.getElementById('experience-label').textContent = totalMonths < 12 ? 'Months' : 'Years';
-
-  // Update the "details-grid" section
   document.getElementById('details-experience').textContent = experienceText;
 });
