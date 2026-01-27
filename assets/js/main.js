@@ -316,7 +316,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const [monthName, year] = str.split(' ');
     const month = monthMap[monthName];
     if (month === undefined || !year) return null;
-    return new Date(parseInt(year), month, 1); // reliable everywhere
+    return new Date(parseInt(year), month, 1);
   };
 
   periodBadges.forEach((badge) => {
@@ -332,17 +332,25 @@ document.addEventListener('DOMContentLoaded', function () {
       (endDate.getFullYear() - startDate.getFullYear()) * 12 +
       (endDate.getMonth() - startDate.getMonth());
 
-    totalMonths += months;
+    totalMonths += Math.max(months, 0);
   });
 
-  const experienceText = totalMonths < 12
-    ? `${totalMonths} Months`
-    : `${Math.floor(totalMonths / 12)} Year${Math.floor(totalMonths / 12) > 1 ? 's' : ''}`;
+// Split total months
+const years = Math.floor(totalMonths / 12);
+const months = totalMonths % 12;
 
-  document.getElementById('experience').textContent =
-    totalMonths < 12 ? totalMonths : Math.floor(totalMonths / 12);
-  document.getElementById('experience-label').textContent =
-    totalMonths < 12 ? 'Months' : 'Years';
-  document.getElementById('details-experience').textContent = experienceText;
+// Format experience text
+let experienceText = '';
+if (years > 0) {
+  experienceText = `${years}y${months > 0 ? months + 'm' : ''}`;
+} else {
+  experienceText = `${months}m`;
+}
+
+// Apply to UI (same logic everywhere)
+document.getElementById('experience').textContent = experienceText;
+document.getElementById('experience-label').textContent = 'Experience';
+document.getElementById('details-experience').textContent = experienceText;
 });
+
 
