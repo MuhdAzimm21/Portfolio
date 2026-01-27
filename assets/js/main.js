@@ -347,10 +347,21 @@ if (years > 0) {
   experienceText = `${months}m`;
 }
 
+let experienceText2 = '';
+if (years > 0) {
+  experienceText2 = `${years} year${years > 1 ? 's' : ''}`;
+  if (months > 0) {
+    experienceText2 += ` ${months} month${months > 1 ? 's' : ''}`;
+  }
+} else {
+  experienceText2 = `${months} month${months > 1 ? 's' : ''}`;
+}
+
+
 // Apply to UI (same logic everywhere)
 document.getElementById('experience').textContent = experienceText;
 document.getElementById('experience-label').textContent = 'Experience';
-document.getElementById('details-experience').textContent = experienceText;
+document.getElementById('details-experience').textContent = experienceText2;
 });
 
 
