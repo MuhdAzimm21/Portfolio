@@ -1,4 +1,4 @@
-const portfolioData = {
+window.portfolioData = {
   name: "Muhammad Azim Bin Kamarudin",
   contact: {
     email: "muhdazimm21@gmail.com",
