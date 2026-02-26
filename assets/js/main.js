@@ -230,25 +230,6 @@
 
 })();
 
-// CV Download Functionality
-document.getElementById('download-cv').addEventListener('click', function (e) {
-  e.preventDefault(); // Prevent default link behavior
-
-  // Set the file URL and filename
-  const fileUrl = 'assets/cv/CV_Muhammad_Azim.pdf'; // Path to your CV file
-  const fileName = 'CV_Muhammad_Azim.pdf'; // Desired download filename
-
-  // Create a temporary <a> element
-  const link = document.createElement('a');
-  link.href = fileUrl;
-  link.download = fileName;
-
-  // Append the <a> to the body, trigger the click, and remove it
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-});
-
 // Contact Form Functionality
 document.getElementById('send-message').addEventListener('click', function () {
   const name = document.getElementById('name').value.trim();
