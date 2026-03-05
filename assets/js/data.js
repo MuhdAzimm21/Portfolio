@@ -6,7 +6,7 @@ window.portfolioData = {
     location: "Pendang, Kedah"
   },
 
-  summary: "Computer Science graduate with experience in application development, technical support, and documentation (RCA, PM, SOP). Serving as a Resident Engineer on the client side, supporting Enterprise Service Management (ESM) operations. Skilled in preventive maintenance, basic network troubleshooting, and delivering reliable technical solutions.",
+  summary: "Computer Science graduate with hands-on experience in Enterprise Service Management (ESM), technical support, and application development. Currently serving as a Resident Engineer (SPOC) on the client side, supporting system migration, deployment, and operational stability. Experienced in preventive maintenance, access control troubleshooting, network infrastructure support, and technical documentation including RCA, PM, and SOP preparation. Possess practical exposure to campus core and data center environments, with a strong foundation in programming and database management. Committed to delivering reliable, structured, and efficient technical solutions in enterprise environments.",
 
   experience: [
     {
@@ -68,17 +68,34 @@ window.portfolioData = {
     }
   ],
 
-  skills: [
-    "Proficient in JavaScript and SQL for programming",
-    "Experienced in MySQL and SQLite for database management",
-    "Troubleshooting and optimization",
-    "Basic Networking",
-    "Basic video and image editing skills using platforms like CapCut and Canva",
-    "Familiar with AI tools like Gemini, ChatGPT, OpenART, RecCloud.Ai and others",
-    "Research on best AI tools for task optimization",
-    "AI Video Generation",
-    "Basic Understanding of ESM"
-  ],
+  "skills": {
+    "technical_skills": [
+      "JavaScript and SQL programming",
+      "Database management using MySQL and SQLite",
+      "Basic networking concepts and troubleshooting",
+      "Access Control system troubleshooting and support",
+      "Enterprise Service Management (ESM) operational support",
+      "System troubleshooting, diagnostics, and optimization"
+    ],
+    "it_operations_support": [
+      "Preventive Maintenance (PM) for network and IT infrastructure",
+      "Root Cause Analysis (RCA) preparation and incident documentation",
+      "Standard Operating Procedure (SOP) development and technical documentation",
+      "Technical support and client-side system support (SPOC role)",
+      "Exposure to campus core and data center network environments"
+    ],
+    "software_tools": [
+      "AI productivity tools including ChatGPT, Gemini, OpenART, and RecCloud AI",
+      "AI-assisted content and video generation",
+      "Basic multimedia editing using CapCut and Canva"
+    ],
+    "professional_skills": [
+      "Technical documentation and report preparation",
+      "Research and evaluation of emerging technologies and AI tools",
+      "Problem-solving and analytical thinking",
+      "Communication and coordination with technical teams and stakeholders"
+    ]
+  },
 
   Certificates: [
     "Google Cybersecurity Professional Certificate",

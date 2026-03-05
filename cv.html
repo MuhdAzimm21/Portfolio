@@ -32,6 +32,12 @@ h2 {
   text-transform: uppercase;
 }
 
+p { 
+  text-align: justify;
+  font-size: 13px;
+  margin-bottom: 4px;
+  } 
+
 .contact { font-size: 13px; margin-bottom: 15px; }
 .section { margin-bottom: 15px; }
 .job-title { font-weight: 600; }
@@ -48,13 +54,6 @@ li { font-size: 13px; margin-bottom: 4px; }
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
-}
-
-.skill-badge {
-  background: #e8f0fe;
-  padding: 4px 8px;
-  border-radius: 3px;
-  font-size: 11px;
 }
 
 /* Hide button when printing */
@@ -122,7 +121,7 @@ button {
 
   <div class="section">
     <h2>Key Skills</h2>
-    <div class="skills" id="skills"></div>
+    <div id="skills"></div>
   </div>
 
   <div class="section">
@@ -174,10 +173,22 @@ document.addEventListener("DOMContentLoaded", function() {
     `;
   });
 
-  const skills = document.getElementById("skills");
-  portfolioData.skills.forEach(skill => {
-    skills.innerHTML += `<span class="skill-badge">${skill}</span>`;
-  });
+const skillsContainer = document.getElementById("skills");
+
+Object.entries(portfolioData.skills).forEach(([category, skillArray]) => {
+  skillsContainer.innerHTML += `
+    <li><strong>${formatCategory(category)}</strong></li>
+    <ul>
+      ${skillArray.map(skill => `<li>${skill}</li>`).join("")}
+    </ul>
+  `;
+});
+
+function formatCategory(category) {
+  return category
+    .replace(/_/g, " ")
+    .replace(/\b\w/g, char => char.toUpperCase());
+}
 
   const cert = document.getElementById("certificates");
   portfolioData.Certificates.forEach(c => {
