@@ -4,114 +4,45 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CV - Muhammad Azim</title>
-
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-
 <style>
-body {
-  font-family: 'Inter', Arial, sans-serif;
-  margin: 0;
-  background: #f4f6f9;
-}
-
-.container {
-  width: 100%;
-  max-width: 210mm;
-  min-height: 297mm;
-  margin: 0 auto;
-  background: white;
-  padding: 10mm;
-  box-sizing: border-box;
-}
-
-@media (min-width: 768px) {
-  .container {
-    padding: 20mm;
-    margin: 20px auto;
-  }
-}
-
-h1 { font-size: 26px; margin-bottom: 5px; }
-h2 {
-  font-size: 14px;
-  border-bottom: 1px solid #000;
-  padding-bottom: 4px;
-  margin-top: 20px;
-  text-transform: uppercase;
-}
-
-p { 
-  text-align: justify;
-  font-size: 13px;
-  margin-bottom: 4px;
-  } 
-
-.contact { font-size: 13px; margin-bottom: 15px; }
-.section { margin-bottom: 15px; }
-.job-title { font-weight: 600; }
-.company-period { font-size: 12px; color: #555; }
-
-ul {
-  margin: 6px 0;
-  padding-left: 18px;
-}
-
-li { font-size: 13px; margin-bottom: 4px; }
-
-.skills-category {
-  list-style: none;
-  padding-left: 0;
-  font-weight: 600;
-  margin-top: 10px;
-}
-
-/* Hide button when printing */
-.download-btn { text-align: right; margin-bottom: 10px; }
-
-button {
-  padding: 8px 14px;
-  border: none;
-  background: #000;
-  color: white;
-  cursor: pointer;
-}
-
-@media print {
-  body { 
-    background: white; 
-    margin: 0;
-    padding: 0;
-  }
+  body { font-family: 'Inter', sans-serif; margin: 0; background: #f4f6f9; color: #333; line-height: 1.5; }
+  .container { width: 100%; max-width: 210mm; margin: 0 auto; background: white; padding: 15mm; box-sizing: border-box; }
+  @media (min-width: 768px) { .container { padding: 20mm; margin: 20px auto; box-shadow: 0 0 10px rgba(0,0,0,0.1); } }
   
-  .download-btn { display: none; }
+  h1 { font-size: 28px; margin: 0 0 5px; color: #000; }
+  h2 { font-size: 16px; border-bottom: 2px solid #000; padding-bottom: 5px; margin: 25px 0 10px; text-transform: uppercase; font-weight: 700; }
+  p { font-size: 13px; margin: 0 0 10px; text-align: justify; }
+  
+  .contact { font-size: 13px; margin-bottom: 20px; color: #555; }
+  .section { margin-bottom: 20px; }
+  .item-title { font-weight: 700; font-size: 14px; margin: 0; }
+  .item-meta { font-size: 12px; color: #666; margin: 2px 0 5px; }
+  
+  ul { margin: 5px 0 15px; padding-left: 20px; }
+  li { font-size: 13px; margin-bottom: 3px; }
+  
+  .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+  .skill-cat { font-weight: 700; font-size: 13px; margin: 10px 0 5px; display: block; }
 
-  @page {
-    size: A4;
-    margin: 15mm;
-  }
+  .download-btn { text-align: right; margin-bottom: 20px; }
+  button { padding: 10px 20px; border: none; background: #000; color: #fff; cursor: pointer; font-weight: 600; transition: 0.3s; }
+  button:hover { background: #333; }
 
-  .container {
-    margin: 0;
-    width: 100%;
-    max-width: none;
-    min-height: auto;
-    padding: 0;
+  @media print {
+    body { background: white; }
+    .container { width: 100%; margin: 0; padding: 0; box-shadow: none; }
+    .download-btn { display: none; }
+    @page { size: A4; margin: 15mm; }
+    .section { break-inside: avoid; }
   }
-
-  .section {
-    break-inside: avoid;
-    margin-bottom: 15px;
-  }
-}
 </style>
 </head>
-
 <body>
 
 <div class="container">
-
   <div class="download-btn">
-    <button onclick="downloadPDF()">Download as PDF</button>
+    <button onclick="window.print()">Download as PDF</button>
   </div>
 
   <h1 id="name"></h1>
@@ -134,89 +65,57 @@ button {
 
   <div class="section">
     <h2>Key Skills</h2>
-    <div id="skills-list"></div>
+    <div id="skills" class="skills-grid"></div>
   </div>
 
   <div class="section">
     <h2>Certifications</h2>
     <ul id="certificates"></ul>
   </div>
-
 </div>
 
 <script src="assets/js/data.js"></script>
-
 <script>
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", () => {
+  const data = window.portfolioData;
+  if (!data) return;
 
-  if (!window.portfolioData) {
-    alert("portfolioData not found.");
-    return;
-  }
+  document.getElementById("name").textContent = data.name;
+  document.getElementById("contact").textContent = `${data.contact.email} | ${data.contact.phone} | ${data.location}`;
+  document.getElementById("summary").textContent = data.about.bio; // Using bio as summary
 
-  document.getElementById("name").textContent = portfolioData.name;
+  const renderList = (arr) => `<ul>${arr.map(item => `<li>${item}</li>`).join('')}</ul>`;
 
-  document.getElementById("contact").innerHTML =
-    `${portfolioData.contact.email} | 
-     ${portfolioData.contact.phone} | 
-     ${portfolioData.contact.location}`;
-
-  document.getElementById("summary").textContent =
-    portfolioData.summary;
-
-  const exp = document.getElementById("experience");
-  portfolioData.experience.forEach(job => {
-    exp.innerHTML += `
-      <p class="job-title">${job.title}</p>
-      <p class="company-period">${job.company} | ${job.period}</p>
-      <ul>
-        ${job.description.map(d => `<li>${d}</li>`).join("")}
-      </ul>
-    `;
+  const expRoot = document.getElementById("experience");
+  data.experience.forEach(job => {
+    expRoot.innerHTML += `
+      <div style="margin-bottom: 15px;">
+        <p class="item-title">${job.title}</p>
+        <p class="item-meta">${job.company} | ${job.period}</p>
+        ${renderList(job.description)}
+      </div>`;
   });
 
-  const edu = document.getElementById("education");
-  portfolioData.education.forEach(e => {
-    edu.innerHTML += `
-      <p class="job-title">${e.degree}</p>
-      <p class="company-period">${e.institution} | ${e.period}</p>
-      <ul>
-        ${e.details.map(d => `<li>${d}</li>`).join("")}
-      </ul>
-    `;
+  const eduRoot = document.getElementById("education");
+  data.education.forEach(edu => {
+    eduRoot.innerHTML += `
+      <div style="margin-bottom: 10px;">
+        <p class="item-title">${edu.degree}</p>
+        <p class="item-meta">${edu.institution} | ${edu.period}</p>
+        ${renderList(edu.details)}
+      </div>`;
   });
 
-const skillsContainer = document.getElementById("skills-list");
+  const skillsRoot = document.getElementById("skills");
+  Object.entries(data.skills).forEach(([cat, list]) => {
+    skillsRoot.innerHTML += `<div><span class="skill-cat">${cat}</span>${renderList(list)}</div>`;
+  });
 
-Object.entries(portfolioData.skills).forEach(([category, skillArray]) => {
-  const categoryTitle = document.createElement("p");
-  categoryTitle.className = "skills-category";
-  categoryTitle.textContent = formatCategory(category);
-  
-  const skillList = document.createElement("ul");
-  skillList.innerHTML = skillArray.map(skill => `<li>${skill}</li>`).join("");
-  
-  skillsContainer.appendChild(categoryTitle);
-  skillsContainer.appendChild(skillList);
+  const certRoot = document.getElementById("certificates");
+  data.certificates.forEach(c => {
+    certRoot.innerHTML += `<li>${c.title} (${c.issuer})</li>`;
+  });
 });
-
-function formatCategory(category) {
-  return category
-    .replace(/_/g, " ")
-    .replace(/\b\w/g, char => char.toUpperCase());
-}
-
-  const cert = document.getElementById("certificates");
-  portfolioData.Certificates.forEach(c => {
-    cert.innerHTML += `<li>${c}</li>`;
-  });
-
-});
-
-function downloadPDF() {
-  window.print();
-}
 </script>
-
 </body>
 </html>
