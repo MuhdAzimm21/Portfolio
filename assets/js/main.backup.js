@@ -257,19 +257,77 @@
           <div><h4>Location</h4><p>${data.location}</p></div>
         </div>
         <div class="info-item d-flex align-items-start mb-3">
-          <div><h4>Email</h4><p>${data.contact.email}</p></div>
+          <div><h4>Email</h4><p>Contact me via form</p></div>
         </div>
         <div class="info-item d-flex align-items-start">
           <div><h4>Call</h4><p>${data.contact.phone}</p></div>
         </div>
       `;
     }
-    
-    // Update "Contact Me" Gmail Button in Profile Card
-    const gmailBtn = document.getElementById('contact-gmail');
-    if (gmailBtn) {
-      gmailBtn.href = `https://mail.google.com/mail/?view=cm&fs=1&to=${data.contact.email}&su=Job%20Opportunity`;
+
+    // --- AI Contact Helper Logic ---
+    const promptTemplates = {
+      job: {
+        subject: "Job Opportunity: [Role Name]",
+        message: "Hi Azim, I came across your portfolio and I'm impressed with your background in [Technical Support/Software Dev]. We have an opening for a [Role] at [Company] and would love to discuss how your skills could fit our team."
+      },
+      collab: {
+        subject: "Project Collaboration Proposal",
+        message: "Hey Azim, I saw your projects like PhishSecure and the Voice-controlled Music Player. I'm working on something similar related to [Topic] and I was wondering if you'd be interested in collaborating on a new feature?"
+      },
+      support: {
+        subject: "Technical Inquiry / Support Request",
+        message: "Hi Azim, I'm reaching out because I need some technical assistance with [System/Network Issue]. Given your experience with ESM support and Network troubleshooting, I thought you'd be the right person to ask."
+      },
+      hello: {
+        subject: "Just saying Hello!",
+        message: "Hi Azim, just wanted to drop a message to say I really enjoyed browsing your portfolio. Great work on the interactive tech stack! Let's stay connected."
+      }
+    };
+
+    const promptButtons = document.querySelectorAll('.btn-prompt');
+    const nameInput = document.getElementById('name');
+    const subjectInput = document.getElementById('subject');
+    const messageInput = document.getElementById('message');
+
+    function updatePrompt(type) {
+      const template = promptTemplates[type];
+      const name = nameInput.value || "[Your Name]";
+      
+      // Only update if the user hasn't manually typed something different yet
+      // or if they just clicked a prompt button
+      subjectInput.value = template.subject;
+      let finalMessage = template.message.replace("[Your Name]", name);
+      messageInput.value = finalMessage;
     }
+
+    promptButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        promptButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        updatePrompt(btn.dataset.type);
+      });
+    });
+
+    // Initialize with first prompt
+    if (promptButtons.length > 0 && !subjectInput.value) {
+      updatePrompt('job');
+    }
+
+    // Update message if name changes, but only if the message matches a template
+    nameInput?.addEventListener('input', () => {
+      const activeBtn = document.querySelector('.btn-prompt.active');
+      if (activeBtn) {
+        const type = activeBtn.dataset.type;
+        const name = nameInput.value || "[Your Name]";
+        const template = promptTemplates[type];
+        
+        // If the user hasn't heavily edited the message, keep updating the name part
+        if (messageInput.value.includes("Hi Azim") || messageInput.value.includes("Hey Azim")) {
+          messageInput.value = template.message.replace("[Your Name]", name);
+        }
+      }
+    });
   }
 
   /**
@@ -370,21 +428,45 @@
     }
   });
 
-  // Contact Form Logic (Mailto fallback)
-  document.getElementById('send-message')?.addEventListener('click', () => {
+  // Contact Form Logic (EmailJS Integration)
+  document.getElementById('send-message')?.addEventListener('click', function() {
+    const btn = this;
     const name = document.getElementById('name').value.trim();
+    const emailSender = document.getElementById('email-sender').value.trim();
     const subject = document.getElementById('subject').value.trim();
     const message = document.getElementById('message').value.trim();
-    const email = window.portfolioData?.contact?.email;
 
-    if (!name || !subject || !message) {
-      alert('Please fill in all fields.');
+    if (!name || !emailSender || !subject || !message) {
+      alert('Please fill in all fields, including your email address.');
       return;
     }
-    
-    if (confirm("This will open your default email client. Continue?")) {
-      window.open(`mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent("From: " + name + "\n\n" + message)}`);
-    }
+
+    // Update button state
+    const originalText = btn.innerHTML;
+    btn.disabled = true;
+    btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span> Sending...';
+
+    // Note: Ensure these keys match the {{tag_names}} in your EmailJS Template!
+    const templateParams = {
+      user_name: name,
+      user_email: emailSender,
+      user_subject: subject,
+      message: message
+    };
+
+    emailjs.send("service_u5dofgs", "template_nujzwyg", templateParams)
+      .then(function(response) {
+        alert('Message sent successfully! Azim will get back to you soon.');
+        document.getElementById('contact-form').reset();
+        btn.disabled = false;
+        btn.innerHTML = originalText;
+        if (typeof window.updatePrompt === 'function') window.updatePrompt('job');
+      }, function(error) {
+        // This will now show the exact error from EmailJS
+        alert('Failed to send: ' + (error.text || error.message || 'Unknown Error') + '. Please check your Service/Template IDs.');
+        btn.disabled = false;
+        btn.innerHTML = originalText;
+      });
   });
 
   // Run

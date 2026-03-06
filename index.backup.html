@@ -23,6 +23,16 @@
 
   <!-- Styles CSS File -->
   <link href="assets/css/styles.css" rel="stylesheet">
+  
+  <!-- EmailJS SDK -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script type="text/javascript">
+    (function() {
+      emailjs.init({
+        publicKey: "gAMrhUr9YmGvLaF-1",
+      });
+    })();
+  </script>
 </head>
 
 <body class="index-page">
@@ -90,7 +100,7 @@
               </div>
               <div class="profile-actions">
                 <a href="cv.html" target="_blank" class="btn-primary">View CV</a>
-                <a id="contact-gmail" class="btn-secondary" target="_blank" rel="noopener"><i class="bi bi-envelope"></i> Contact</a>
+                <a href="#contact" class="btn-secondary"><i class="bi bi-envelope"></i> Contact Me</a>
               </div>
               <div class="social-connect">
                 <a href="https://www.linkedin.com/in/muhdazim21"><i class="bi bi-linkedin"></i></a>
@@ -196,12 +206,47 @@
         <div class="row gy-4">
           <div class="col-lg-4"><div class="info" id="contact-info-root"></div></div>
           <div class="col-lg-8">
-            <form id="contact-form" class="email-form">
-              <div class="row"><div class="col-md-6 form-group mb-3"><input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required></div></div>
-              <div class="form-group mb-3"><input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required></div>
-              <div class="form-group mb-3"><textarea class="form-control" name="message" id="message" rows="6" placeholder="Message" required></textarea></div>
-              <div class="text-center"><button type="button" id="send-message" class="btn-primary">Send Message</button></div>
-            </form>
+            <div class="contact-helper-card" data-aos="fade-up" data-aos-delay="200">
+              <div class="helper-header mb-4">
+                <i class="bi bi-robot me-2 text-accent"></i>
+                <span>AI Contact Helper</span>
+              </div>
+              
+              <div class="prompt-builder mb-4">
+                <p class="mb-3">I want to reach out to Azim regarding:</p>
+                <div class="d-flex flex-wrap gap-2 mb-4" id="inquiry-types">
+                  <button type="button" class="btn-prompt active" data-type="job">Job Opportunity</button>
+                  <button type="button" class="btn-prompt" data-type="collab">Collaboration</button>
+                  <button type="button" class="btn-prompt" data-type="support">Technical Support</button>
+                  <button type="button" class="btn-prompt" data-type="hello">Say Hello</button>
+                </div>
+              </div>
+
+              <form id="contact-form" class="email-form">
+                <div class="row">
+                  <div class="col-md-6 form-group mb-3">
+                    <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+                  </div>
+                  <div class="col-md-6 form-group mb-3">
+                    <input type="email" name="email" class="form-control" id="email-sender" placeholder="Your Email" required>
+                  </div>
+                </div>
+                <div class="form-group mb-3">
+                  <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+                </div>
+                <div class="form-group mb-3">
+                  <div class="prompt-container">
+                    <textarea class="form-control prompt-textarea" name="message" id="message" rows="6" placeholder="Your AI-generated message will appear here..." required></textarea>
+                    <div class="prompt-label">Edit or refine the prompt above</div>
+                  </div>
+                </div>
+                <div class="text-center">
+                  <button type="button" id="send-message" class="btn-primary w-100">
+                    <i class="bi bi-send-fill me-2"></i> Send Message via Email
+                  </button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </div>

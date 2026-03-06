@@ -8,7 +8,6 @@ window.portfolioData = {
   
   // --- Contact ---
   contact: {
-    email: "muhdazimm21@gmail.com",
     phone: "+60 13 572 4995",
     whatsapp: "https://wa.me/60135724995",
     linkedin: "https://www.linkedin.com/in/muhdazim21",
@@ -29,7 +28,6 @@ window.portfolioData = {
     details: [
       { label: "Degree", value: "Bachelor of Computer Science (Hons.)", icon: "bi-mortarboard" },
       { label: "Based In", value: "Pendang, Kedah", icon: "bi-geo-alt" },
-      { label: "Email", value: "muhdazimm21@gmail.com", icon: "bi-envelope" },
       { label: "Phone", value: "+60 13 572 4995", icon: "bi-phone" },
       { label: "Availability", value: "Open to Work", icon: "bi-calendar-check" }
     ]
