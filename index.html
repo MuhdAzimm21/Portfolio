@@ -36,6 +36,7 @@
         <ul>
           <li><a href="#hero" class="active">Home</a></li>
           <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
           <li><a href="#resume">Resume</a></li>
           <li><a href="#portfolio">Portfolio</a></li>
           <li><a href="#certificate">Certificates</a></li>
@@ -106,6 +107,20 @@
       </div>
     </section>
 
+    <!-- Skills Section -->
+    <section id="skills" class="skills section">
+      <div class="container section-title" data-aos="fade-up">
+        <span class="subtitle">Tech Stack</span>
+        <h2>My Skills</h2>
+        <p>A comprehensive overview of my technical expertise and the tools I use.<br> (Click on the skill cards items for more details)</p>
+      </div>
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row g-4" id="skills-grid-root">
+          <!-- Skills cards will be injected here by JS -->
+        </div>
+      </div>
+    </section>
+
     <!-- Resume Section -->
     <section id="resume" class="resume section">
       <div class="container section-title" data-aos="fade-up">
@@ -124,6 +139,13 @@
             <div class="education-section">
               <div class="education-timeline" data-aos="fade-left" data-aos-delay="300">
                 <div class="timeline-track" id="education-root"></div>
+              </div>
+            </div>
+            <!-- Added Certifications Summary to balance the right side -->
+            <div class="cert-summary-section mt-5" data-aos="fade-left" data-aos-delay="400">
+              <h3 class="resume-title"><i class="bi bi-patch-check me-2"></i>Professional Certifications</h3>
+              <div class="cert-list-track" id="cert-summary-root">
+                <!-- Certifications list will be injected here -->
               </div>
             </div>
           </div>
@@ -184,6 +206,23 @@
         </div>
       </div>
     </section>
+
+    <!-- Skill Detail Modal -->
+    <div class="modal fade" id="skillModal" tabindex="-1" aria-labelledby="skillModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="skillModalLabel"><i id="modal-icon" class="bi me-2"></i> <span id="modal-title-text"></span></h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <ul id="modal-details-list" class="list-unstyled">
+              <!-- Details will be injected here -->
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
 
   </main>
 

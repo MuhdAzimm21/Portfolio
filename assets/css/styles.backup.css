@@ -997,6 +997,170 @@ section,
 }
 
 /*--------------------------------------------------------------
+# Skills Section
+--------------------------------------------------------------*/
+.skills {
+  background: var(--background-color);
+  padding: 60px 0;
+}
+
+.skills .skill-card {
+  background: var(--surface-color);
+  padding: 30px;
+  border-radius: 20px;
+  height: 100%;
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 95%);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.skills .skill-card:hover {
+  transform: translateY(-10px);
+  border-color: var(--accent-color);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.skills .skill-card .card-icon {
+  width: 60px;
+  height: 60px;
+  background: color-mix(in srgb, var(--accent-color), transparent 90%);
+  color: var(--accent-color);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  margin-bottom: 25px;
+  transition: 0.3s;
+}
+
+.skills .skill-card:hover .card-icon {
+  background: var(--accent-color);
+  color: var(--contrast-color);
+  transform: rotate(-10deg) scale(1.1);
+}
+
+.skills .skill-card h3 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  color: var(--heading-color);
+  position: relative;
+  padding-bottom: 15px;
+}
+
+.skills .skill-card h3::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 3px;
+  background: var(--accent-color);
+  border-radius: 3px;
+}
+
+.skills .skill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 10px; /* Better vertical and horizontal spacing */
+  margin-top: auto;
+  width: 100%;
+}
+
+.skills .skill-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: color-mix(in srgb, var(--default-color), transparent 96%);
+  padding: 8px 14px;
+  border-radius: 10px;
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 92%);
+  transition: all 0.3s ease;
+  flex: 0 1 auto; /* Allows shrinking and growing appropriately */
+  max-width: 100%; /* Prevents breaking out of the container */
+}
+
+.skills .skill-item:hover {
+  background: color-mix(in srgb, var(--accent-color), transparent 90%);
+  border-color: var(--accent-color);
+  transform: scale(1.05);
+}
+
+.skills .skill-item i {
+  color: var(--accent-color);
+  font-size: 14px;
+  flex-shrink: 0; /* Prevents icon from shrinking when text wraps */
+}
+
+.skills .skill-item span {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--default-color);
+  /* Removed white-space: nowrap to allow wrapping on very small screens */
+  line-height: 1.2;
+}
+
+@media (max-width: 992px) {
+  .skills .skill-card {
+    padding: 25px;
+  }
+}
+
+@media (max-width: 768px) {
+  .skills .skill-item {
+    padding: 6px 12px;
+  }
+  
+  .skills .skill-item span {
+    font-size: 12px;
+  }
+}
+
+/*--------------------------------------------------------------
+# Skill Modal Styling
+--------------------------------------------------------------*/
+.modal-content {
+  background-color: var(--surface-color);
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+  border-radius: 20px;
+  color: var(--default-color);
+}
+
+.modal-header {
+  border-bottom: 1px solid color-mix(in srgb, var(--default-color), transparent 92%);
+  padding: 20px 25px;
+}
+
+.modal-title {
+  font-weight: 700;
+  color: var(--heading-color);
+  display: flex;
+  align-items: center;
+}
+
+.modal-title i {
+  color: var(--accent-color);
+  font-size: 24px;
+}
+
+.modal-body {
+  padding: 25px;
+}
+
+.modal-body ul li {
+  line-height: 1.6;
+  font-size: 15px;
+  color: color-mix(in srgb, var(--default-color), transparent 10%);
+}
+
+.modal-body ul li i {
+  color: var(--accent-color);
+  font-size: 18px;
+}
+
+/*--------------------------------------------------------------
 # Resume Section
 --------------------------------------------------------------*/
 .resume .section-header {

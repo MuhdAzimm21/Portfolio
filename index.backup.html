@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Portfolio</title>
+  <title>Portfolio - Muhammad Azim</title>
 
   <!-- Favicons -->
   <link href="assets/img/portIcon.png" rel="icon">
@@ -12,7 +12,7 @@
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Raleway:wght@100;200;300;400;500;600;700;800;900&family=Mulish:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -23,22 +23,20 @@
 
   <!-- Styles CSS File -->
   <link href="assets/css/styles.css" rel="stylesheet">
-
 </head>
 
 <body class="index-page">
 
   <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center">
-
       <a href="index.html" class="logo d-flex align-items-center me-auto">
-        <img src="assets/img/portfolio.png" alt="">
+        <img src="assets/img/portfolio.png" alt="Logo">
       </a>
-
       <nav id="navmenu" class="navmenu">
         <ul>
           <li><a href="#hero" class="active">Home</a></li>
           <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
           <li><a href="#resume">Resume</a></li>
           <li><a href="#portfolio">Portfolio</a></li>
           <li><a href="#certificate">Certificates</a></li>
@@ -49,552 +47,143 @@
     </div>
   </header>
 
-    <main class="main">
+  <main class="main">
 
     <!-- Hero Section -->
     <section id="hero" class="hero section dark-background">
-
       <img src="assets/img/profile/hero-bg.png" alt="" data-aos="fade-in">
-
       <div class="container" data-aos="fade-up" data-aos-delay="100">
         <div class="row justify-content-center">
           <div class="col-lg-8 text-center">
-            <h2>Hi, I'm Muhammad Azim</h2>
-            <p>I'm <span class="typed" data-typed-items="Fresh Graduated, Major in Computer Science, Looking for Job, Open to Explore"></span><span class="typed-cursor" aria-hidden="true"></span></p>
+            <h2><!-- Auto-filled by JS --></h2>
+            <p>I'm <span class="typed"></span><span class="typed-cursor" aria-hidden="true"></span></p>
             <div class="social-links">
               <a href="https://www.linkedin.com/in/muhdazim21"><i class="bi bi-linkedin"></i></a>
             </div>
           </div>
         </div>
       </div>
-
-    </section><!-- /Hero Section -->
+    </section>
 
     <!-- About Section -->
     <section id="about" class="about section">
-
-      <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <span class="subtitle">About Me</span>
         <h2>About Me</h2>
-        <p> Fresh graduated with a degree in Computer Science</p>
-      </div><!-- End Section Title -->
-
+      </div>
       <div class="container" data-aos="fade-up" data-aos-delay="100">
-
         <div class="row gy-5">
           <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="150">
             <div class="profile-card">
               <div class="profile-header">
                 <div class="profile-avatar">
-                  <img src="assets/img/profile/heroImage.jpg" class="img-fluid" alt="">
+                  <img src="" class="img-fluid" alt="Avatar">
                   <div class="status-indicator"></div>
                 </div>
-                <h3>Muhammad Azim Bin Kamarudin</h3>
-                <span class="role">Technical Support and Software Development</span>
+                <h3><!-- Auto-filled --></h3>
+                <span class="role"><!-- Auto-filled --></span>
               </div>
-
               <div class="profile-stats">
-                <div class="stat-item">
-                  <h4 id="age"></h4>
-                  <p>Age</p>
-                </div>
-                <div class="stat-item">
-                  <h4 id="experience"></h4>
-                  <p id="experience-label"></p>
-                </div>
-                <div class="stat-item">
-                  <h4>7</h4>
-                  <p>Certificates</p>
-                </div>
+                <div class="stat-item"><h4 id="age"></h4><p>Age</p></div>
+                <div class="stat-item"><h4 id="experience"></h4><p>Experience</p></div>
+                <div class="stat-item"><h4 id="cert-count"></h4><p>Certificates</p></div>
               </div>
-
               <div class="profile-actions">
                 <a href="cv.html" target="_blank" class="btn-primary">View CV</a>
-                <!-- Opens Gmail compose in a new tab -->
-                <a id="contact-gmail" class="btn-secondary" target="_blank" rel="noopener"
-                  href="https://mail.google.com/mail/?view=cm&fs=1&to=muhdazimm21@gmail.com&su=Job%20Opportunity&body=Hello%20Azim%2C%0A%0AI%20would%20like%20to%20discuss%20a%20job%20opportunity%20with%20you.">
-                  <i class="bi bi-envelope"></i> Contact
-                </a>
+                <a id="contact-gmail" class="btn-secondary" target="_blank" rel="noopener"><i class="bi bi-envelope"></i> Contact</a>
               </div>
-
               <div class="social-connect">
                 <a href="https://www.linkedin.com/in/muhdazim21"><i class="bi bi-linkedin"></i></a>
               </div>
             </div>
           </div>
-
           <div class="col-lg-8" data-aos="fade-left" data-aos-delay="200">
             <div class="content-wrapper">
-              <div class="bio-section">
-                <div class="section-tag">About Me</div>
-                <h2>Experienced in Technical Support and Software Development</h2>
-                <p>Detail-oriented Computer Science graduate with hands-on experience in academic projects, internships, and technical support. Skilled in application development, third-party system integration, and preparing technical documentation (RCA, PM, SOP). Familiar with preventive maintenance, basic network troubleshooting, and IT infrastructure support. Currently serving as a Resident Engineer on the client side, supporting Enterprise Service Management (ESM) operations and delivering reliable technical solutions.</p>
-              </div>
-
-              <div class="details-grid">
-                <div class="detail-item" data-aos="fade-up" data-aos-delay="250">
-                  <i class="bi bi-briefcase"></i>
-                  <div class="detail-content">
-                    <span>Experience</span>
-                    <strong id="details-experience">1 Year</strong>
-                  </div>
-                </div>
-
-                <div class="detail-item" data-aos="fade-up" data-aos-delay="300">
-                  <i class="bi bi-mortarboard"></i>
-                  <div class="detail-content">
-                    <span>Degree</span>
-                    <strong>Bachelor of Computer Science (Hons.)</strong>
-                  </div>
-                </div>
-
-                <div class="detail-item" data-aos="fade-up" data-aos-delay="350">
-                  <i class="bi bi-geo-alt"></i>
-                  <div class="detail-content">
-                    <span>Based In</span>
-                    <strong>Pendang, Kedah</strong>
-                  </div>
-                </div>
-
-                <div class="detail-item" data-aos="fade-up" data-aos-delay="100">
-                  <i class="bi bi-envelope"></i>
-                  <div class="detail-content">
-                    <span>Email</span>
-                    <strong>muhdazimm21@gmail.com</strong>
-                  </div>
-                </div>
-
-                <div class="detail-item" data-aos="fade-up" data-aos-delay="150">
-                  <i class="bi bi-phone"></i>
-                  <div class="detail-content">
-                    <span>Phone</span>
-                    <strong>+60 13 572 4995</strong>
-                  </div>
-                </div>
-
-                <div class="detail-item" data-aos="fade-up" data-aos-delay="200">
-                  <i class="bi bi-calendar-check"></i>
-                  <div class="detail-content">
-                    <span>Availability</span>
-                    <strong>Open to Work</strong>
-                  </div>
-                </div>
-              </div>
+              <div class="bio-section" id="bio-root"><!-- Automated --></div>
+              <div class="details-grid" id="details-root"><!-- Automated --></div>
             </div>
           </div>
         </div>
-
       </div>
+    </section>
 
-    </section><!-- /About Section -->  
+    <!-- Skills Section -->
+    <section id="skills" class="skills section">
+      <div class="container section-title" data-aos="fade-up">
+        <span class="subtitle">Tech Stack</span>
+        <h2>My Skills</h2>
+        <p>A comprehensive overview of my technical expertise and the tools I use.<br> (Click on the skill cards items for more details)</p>
+      </div>
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row g-4" id="skills-grid-root">
+          <!-- Skills cards will be injected here by JS -->
+        </div>
+      </div>
+    </section>
 
     <!-- Resume Section -->
     <section id="resume" class="resume section">
-
-  <!-- Section Title -->
-  <div class="container section-title" data-aos="fade-up">
-    <span class="subtitle">Resume</span>
-    <h2>My Journey</h2>
-    <p>Discover my professional experience, academic achievements, and certifications.</p>
-  </div><!-- End Section Title -->
-
-  <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-    <div class="row gy-5">
-      <!-- Experience Section -->
-      <div class="col-lg-6">
-        <div class="experience-section">
-
-          <div class="experience-cards">
-
-              <div class="exp-card featured" data-aos="zoom-in" data-aos-delay="300">
-              <div class="card-header">
-                <i class="bi bi-briefcase"></i>
-                <span class="period-badge">December 2025 - February 2026</span>
-              </div>
-              <div class="card-body">
-                <h4>Technical Support Engineer</h4>
-                <p class="company-name">Weststar Engineering</p>
-                <p>Serving as a Resident Engineer on the client side as SPOC, supporting Enterprise Service Management (ESM) migration and deployment.</p>
-                <p>Performed troubleshooting for Access Control systems and prepared technical documentation, including reports and system records.</p>
+      <div class="container section-title" data-aos="fade-up">
+        <span class="subtitle">Resume</span>
+        <h2>My Journey</h2>
+        <p>Professional experience, academic achievements, and certifications.</p>
+      </div>
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row gy-5">
+          <div class="col-lg-6">
+            <div class="experience-section">
+              <div class="experience-cards" id="experience-root"></div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="education-section">
+              <div class="education-timeline" data-aos="fade-left" data-aos-delay="300">
+                <div class="timeline-track" id="education-root"></div>
               </div>
             </div>
-
-
-            <div class="exp-card featured" data-aos="zoom-in" data-aos-delay="300">
-              <div class="card-header">
-                <i class="bi bi-briefcase"></i>
-                <span class="period-badge">June 2025 - September 2025</span>
-              </div>
-              <div class="card-body">
-                <h4>Technical Support (K-Youth)</h4>
-                <p class="company-name">Weststar Engineering</p>
-                <p>Performed Preventive Maintenance (PM) for Access Points.</p>
-                <p>Prepared Root Cause Analysis (RCA), Preventive Maintenance (PM), and Standard Operating Procedure (SOP) documentation.</p>
-                <p>Actively involved in the Switch Replacement Project, supporting project planning, device replacement, and network migration.</p>
-                <p>Gained hands-on experience in campus core and data center core environments, enhancing understanding of enterprise network architecture.</p>
-              </div>
-            </div>
-
-            <div class="exp-card" data-aos="zoom-in" data-aos-delay="350">
-              <div class="card-header">
-                <i class="bi bi-laptop"></i>
-                <span class="period-badge">September 2024 - January 2025</span>
-              </div>
-              <div class="card-body">
-                <h4>Intern</h4>
-                <p class="company-name">Software Development Department, Works25</p>
-                <p>Integrated third-party software to enhance system functionality and compatibility.</p>
-                <p>Created and updated system documentation and code tutorials for user guidance.</p>
-                <p>Conducted bug testing and improved system usability.</p>
-                <p>Developed a theme customization feature with different options.</p>
-                <p>Created a feature for users to choose from pre-designed website templates.</p>
+            <!-- Added Certifications Summary to balance the right side -->
+            <div class="cert-summary-section mt-5" data-aos="fade-left" data-aos-delay="400">
+              <h3 class="resume-title"><i class="bi bi-patch-check me-2"></i>Professional Certifications</h3>
+              <div class="cert-list-track" id="cert-summary-root">
+                <!-- Certifications list will be injected here -->
               </div>
             </div>
           </div>
         </div>
       </div>
+    </section>
 
-      <!-- Education Section -->
-      <div class="col-lg-6">
-        <div class="education-section">
-
-          <div class="education-timeline" data-aos="fade-left" data-aos-delay="300">
-            <div class="timeline-track">
-              <div class="timeline-item">
-                <div class="timeline-marker">
-                  <i class="bi bi-mortarboard-fill"></i>
-                </div>
-                <div class="timeline-content">
-                  <span class="year-range">2021 - 2025</span>
-                  <h4>Bachelor of Computer Science (Hons.)</h4>
-                  <p class="institution">Universiti Teknologi MARA, Tapah Road, Perak</p>
-                  <p>Graduated with a CGPA of 3.4</p>
-                  <p>Majoring in Computer Science</p>
-                </div>
-              </div>
-
-              <div class="timeline-item">
-                <div class="timeline-marker">
-                  <i class="bi bi-book"></i>
-                </div>
-                <div class="timeline-content">
-                  <span class="year-range">2019 - 2020</span>
-                  <h4>Sijil Tinggi Pelajaran Malaysia (STPM)</h4>
-                  <p class="institution">Sekolah Menengah Kebangsaan Kubor Panjang, Kedah</p>
-                  <p>Graduated with a CGPA of 3.84, achieved MUET Band 4</p>
-                  <p>Excelled in Social Science subjects, including Pengajian Am, Bahasa Melayu, Sejarah, and Seni Visual</p>
-                </div>
-              </div>
-
-              <div class="timeline-item">
-                <div class="timeline-marker">
-                  <i class="bi bi-patch-check-fill"></i>
-                </div>
-                <div class="timeline-content">
-                  <h4>Skills</h4>
-                  <div class="skills-section">
-                    <h4>Technical</h4>
-                    <ul class="certifications-list">
-                      <li>JavaScript & SQL programming</li>
-                      <li>MySQL & SQLite database management</li>
-                      <li>Networking fundamentals & troubleshooting</li>
-                      <li>Access Control system support</li>
-                      <li>Enterprise Service Management (ESM) support</li>
-                      <li>System diagnostics & optimization</li>
-                    </ul>
-
-                    <h4>IT Operations</h4>
-                    <ul class="certifications-list">
-                      <li>Preventive Maintenance (PM)</li>
-                      <li>Root Cause Analysis (RCA) documentation</li>
-                      <li>SOP development & technical reporting</li>
-                      <li>Client-side technical support (SPOC)</li>
-                      <li>Exposure to campus core & data center environments</li>
-                    </ul>
-
-                    <h4>Tools & Technology</h4>
-                    <ul class="certifications-list">
-                      <li>AI productivity tools (ChatGPT, Gemini, OpenART, RecCloud AI)</li>
-                      <li>AI-assisted content & video generation</li>
-                      <li>CapCut & Canva (basic multimedia editing)</li>
-                    </ul>
-
-                    <h4>Professional</h4>
-                    <ul class="certifications-list">
-                      <li>Technical documentation & reporting</li>
-                      <li>Technology research & evaluation</li>
-                      <li>Analytical problem-solving</li>
-                      <li>Team communication & coordination</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio section">
+      <div class="container section-title" data-aos="fade-up">
+        <span class="subtitle">Portfolio</span>
+        <h2>Projects</h2>
+        <p>Gallery of academic and self-projects.</p>
+      </div>
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
+          <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="200">
+            <li data-filter="*" class="filter-active">All Work</li>
+            <li data-filter=".filter-creative">Creative</li>
+            <li data-filter=".filter-digital">Digital</li>
+            <li data-filter=".filter-development">Development</li>
+          </ul>
+          <div class="row gy-4 isotope-container" id="portfolio-root" data-aos="fade-up" data-aos-delay="300"></div>
         </div>
       </div>
-    </div>
-
-  </div>
-
-</section><!-- /Resume Section -->
-
-<!-- Portfolio Section -->
-<section id="portfolio" class="portfolio section">
-  <div class="container section-title" data-aos="fade-up">
-    <span class="subtitle">Portfolio</span>
-    <h2>Projects</h2>
-    <p>Gallery of projects including self projects.</p>
-  </div>
-
-  <div class="container" data-aos="fade-up" data-aos-delay="100">
-    <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
-
-      <!-- Filters -->
-      <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="200">
-        <li data-filter="*" class="filter-active">All Work</li>
-        <li data-filter=".filter-creative">Creative</li>
-        <li data-filter=".filter-digital">Digital</li>
-        <li data-filter=".filter-development">Development</li>
-      </ul>
-
-      <!-- Portfolio Cards -->
-      <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="300">
-
-        <!-- Development Project -->
-        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-development">
-          <div class="portfolio-card">
-            <div class="face face1">
-              <div class="content">
-                <img src="assets/img/portfolio/portfolio-1.png" alt="Final">
-                <h3>Final Year Project - PhishSecure</h3>
-              </div>
-            </div>
-            <div class="face face2">
-              <div class="content">
-                <p>A web-based phishing course designed to educate users about phishing threats that implemented with gamification elements.</p>
-                <a href="https://muhdazimm21.github.io/PhishSecure/">Live Preview</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Development Project -->
-        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-development">
-          <div class="portfolio-card">
-            <div class="face face1">
-              <div class="content">
-                <img src="assets/img/portfolio/portfolio-3.png" alt="Mobile Platform">
-                <h3>Voice-controlled Music Player</h3>
-              </div>
-            </div>
-            <div class="face face2">
-              <div class="content">
-                <p>A voice-controlled music player application that allows users to play, pause, and skip tracks using voice commands.</p>
-                <a href="assets/img/portfolio/portfolio-3.mp4" 
-                  class="glightbox" 
-                  data-gallery="portfolio-videos" 
-                  data-type="video">
-                  View Demo
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Development Project -->
-        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-development">
-          <div class="portfolio-card">
-            <div class="face face1">
-              <div class="content">
-                <img src="assets/img/portfolio/portfolio-4.png" alt="Pdf Tool">
-                <h3>Web based PDF Tool</h3>
-              </div>
-            </div>
-            <div class="face face2">
-              <div class="content">
-                <p>A website that can split, merge or split and merge pdf based on your needs. convenient and user-friendly interface.</p>
-                <a href="https://muhdazimm21.github.io/PDFSelek/">Live Preview</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Development Project -->
-        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-development">
-          <div class="portfolio-card">
-            <div class="face face1">
-              <div class="content">
-                <img src="assets/img/portfolio/portfolio-6.png" alt="Quiz Sejarah">
-                <h3>Web based Sejarah Quiz</h3>
-              </div>
-            </div>
-            <div class="face face2">
-              <div class="content">
-                <p>A web-based quiz application focused on history topics for form 4, featuring interactive questions and a user-friendly interface.</p>
-                <a href="https://muhdazimm21.github.io/JejakSejarahQ/">Live Preview</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-                    <!-- Creative Campaign -->
-        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-digital">
-          <div class="portfolio-card">
-            <div class="face face1">
-              <div class="content">
-                <img src="assets/img/portfolio/portfolio-5.png" alt="Power BI Dashboard">
-                <h3>Power BI Dashboard</h3>
-              </div>
-            </div>
-            <div class="face face2">
-              <div class="content">
-                <p>Power BI Education Student Performance Dashboard which evaluating student progress, identifying areas for improvement, and tracking engagement.</p>
-                <a href="assets/img/portfolio/portfolio-5.png" 
-                  class="glightbox" 
-                  data-gallery="portfolio-Images" 
-                  data-type="image">
-                  View Image
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Creative Campaign -->
-        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-creative">
-          <div class="portfolio-card">
-            <div class="face face1">
-              <div class="content">
-                <img src="assets/img/portfolio/portfolio-2.png" alt="Ai Video">
-                <h3>Ai Video Generation</h3>
-              </div>
-            </div>
-            <div class="face face2">
-              <div class="content">
-                <p>Ai generated video content for PDRM. All the video generated are Ai generated only does not related to any real events.</p>
-                <a href="assets/img/portfolio/portfolio-2.mp4" 
-                  class="glightbox" 
-                  data-gallery="portfolio-videos" 
-                  data-type="video">
-                  View Video
-                </a>
-              </div>
-            </div>
-
-      </div><!-- /isotope-container -->
-    </div><!-- /isotope-layout -->
-  </div><!-- /container -->
-</section><!-- /Portfolio Section -->
-
+    </section>
 
     <!-- Certificates Section -->
     <section id="certificate" class="certificate section">
       <div class="container section-title" data-aos="fade-up">
         <span class="subtitle">Certificates</span>
         <h2>List of Certificates</h2>
-        <p>Gallery of certificates — click to view larger.</p>
+        <p>Click to view full certificate.</p>
       </div>
-
       <div class="container" data-aos="fade-up" data-aos-delay="30">
-        <div class="row g-3">
-          <div class="col-lg-4 col-md-6">
-            <div class="certificate-item">
-              <a href="assets/img/certificates/cert-1.png" class="glightbox" data-gallery="certificate-gallery">
-                <img src="assets/img/certificates/cert-1.png" class="img-fluid" alt="">
-                <div class="certificate-info">
-                  <h4>Google Cybersecurity Professional Certificate</h4>
-                  <small>Coursera</small>
-                  <small>Google</small>
-                </div>
-              </a>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6">
-            <div class="certificate-item">
-              <a href="assets/img/certificates/cert-2.png" class="glightbox" data-gallery="certificate-gallery">
-                <img src="assets/img/certificates/cert-2.png" class="img-fluid" alt="">
-                <div class="certificate-info">
-                  <h4>Certificate of Completion (K-Youth Development Programme 2025)</h4>
-                  <small>K-Youth Development Programme</small>
-                </div>
-              </a>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6">
-            <div class="certificate-item">
-              <a href="assets/img/certificates/cert-3.png" class="glightbox" data-gallery="certificate-gallery">
-                <img src="assets/img/certificates/cert-3.png" class="img-fluid" alt="">
-                <div class="certificate-info">
-                  <h4>Certificate of Completion (AI For MY Future)</h4>
-                  <small>Copilot</small>
-                  <small>AI</small>
-                </div>
-              </a>
-            </div>
-          </div>
-
-      <div class="container" data-aos="fade-up" data-aos-delay="30">
-        <div class="row g-3">
-          <div class="col-lg-4 col-md-6">
-            <div class="certificate-item">
-              <a href="assets/img/certificates/cert-4.png" class="glightbox" data-gallery="certificate-gallery">
-                <img src="assets/img/certificates/cert-4.png" class="img-fluid" alt="">
-                <div class="certificate-info">
-                  <h4>Certificate of Completion (CGM Academy for Youth)</h4>
-                  <small>Climate Governance Malaysia</small>
-                  <small>Sustainability</small>
-                </div>
-              </a>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6">
-            <div class="certificate-item">
-              <a href="assets/img/certificates/cert-5.png" class="glightbox" data-gallery="certificate-gallery">
-                <img src="assets/img/certificates/cert-5.png" class="img-fluid" alt="">
-                <div class="certificate-info">
-                  <h4>Certificate of Completion (Career Essentials in Sustainable Tech by Microsoft and LinkedIn)</h4>
-                  <small>Microsoft</small>
-                  <small>LinkedIn</small>
-                </div>
-              </a>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6">
-            <div class="certificate-item">
-              <a href="assets/img/certificates/cert-6.png" class="glightbox" data-gallery="certificate-gallery">
-                <img src="assets/img/certificates/cert-6.png" class="img-fluid" alt="">
-                <div class="certificate-info">
-                  <h4>Certificate of Completion (Digital Literacy and Productivity Learning Pathway)</h4>
-                  <small>Digital Literacy</small>
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="container" data-aos="fade-up" data-aos-delay="30">
-          <div class="row g-3">
-            <div class="col-lg-4 col-md-6">
-              <div class="certificate-item">
-                <a href="assets/img/certificates/cert-7.png" class="glightbox" data-gallery="certificate-gallery">
-                  <img src="assets/img/certificates/cert-7.png" class="img-fluid" alt="">
-                  <div class="certificate-info">
-                  <h4>Certificate of Completion (Professional Soft Skills Learning Pathway)</h4>
-                  <small>Soft Skills</small>
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
+        <div class="row g-3" id="certificates-root"></div>
       </div>
-    </section><!-- /certificate Section -->
+    </section>
 
     <!-- Contact Section -->
     <section id="contact" class="contact section">
@@ -603,61 +192,41 @@
         <h2>Contact Me</h2>
         <p>Get in touch for projects or collaborations.</p>
       </div>
-
       <div class="container">
         <div class="row gy-4">
-          <div class="col-lg-4">
-            <div class="info">
-              <div class="info-item d-flex align-items-start mb-3">
-                <div>
-                  <h4>Location</h4>
-                  <p>Pendang, Kedah</p>
-                </div>
-              </div>
-
-              <div class="info-item d-flex align-items-start mb-3">
-                <div>
-                  <h4>Email</h4>
-                  <p>muhdazimm21@gmail.com</p>
-                </div>
-              </div>
-
-              <div class="info-item d-flex align-items-start">
-                <div>
-                  <h4>Call</h4>
-                  <p>+60 13 572 4995</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
+          <div class="col-lg-4"><div class="info" id="contact-info-root"></div></div>
           <div class="col-lg-8">
-            <form id="contact-form" role="form" class="email-form">
-              <div class="row">
-                <div class="col-md-6 form-group mb-3">
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
-                </div>
-              </div>
-              <div class="form-group mb-3">
-                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
-              </div>
-              <div class="form-group mb-3">
-                <textarea class="form-control" name="message" id="message" rows="6" placeholder="Message" required></textarea>
-              </div>
-
-              <div class="text-center">
-                <button type="button" id="send-message" class="btn-primary">Send Message</button>
-              </div>
+            <form id="contact-form" class="email-form">
+              <div class="row"><div class="col-md-6 form-group mb-3"><input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required></div></div>
+              <div class="form-group mb-3"><input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required></div>
+              <div class="form-group mb-3"><textarea class="form-control" name="message" id="message" rows="6" placeholder="Message" required></textarea></div>
+              <div class="text-center"><button type="button" id="send-message" class="btn-primary">Send Message</button></div>
             </form>
           </div>
         </div>
       </div>
-    </section><!-- /Contact Section -->
+    </section>
 
-  <!-- Scroll Top -->
+    <!-- Skill Detail Modal -->
+    <div class="modal fade" id="skillModal" tabindex="-1" aria-labelledby="skillModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="skillModalLabel"><i id="modal-icon" class="bi me-2"></i> <span id="modal-title-text"></span></h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <ul id="modal-details-list" class="list-unstyled">
+              <!-- Details will be injected here -->
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-  <!-- Preloader -->
   <div id="preloader"></div>
 
   <!-- Vendor JS Files -->
@@ -670,7 +239,8 @@
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
 
-      <!-- Main JS File -->
+  <!-- Data and Main JS File -->
+  <script src="assets/js/data.js"></script>
   <script src="assets/js/main.js"></script>
 </body>
 </html>
