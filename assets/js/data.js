@@ -38,7 +38,7 @@ window.portfolioData = {
     {
       title: "Technical Support Engineer",
       company: "Weststar Engineering",
-      period: "December 2025 – February 2026",
+      period: "December 2025 – Present",
       type: "Full-time",
       description: [
         "Serving as a Resident Engineer on the client side as SPOC, supporting Enterprise Service Management (ESM) migration and deployment.",

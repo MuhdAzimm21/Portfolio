@@ -107,7 +107,7 @@
     const detailsRoot = document.getElementById('details-root');
     if (detailsRoot) {
       detailsRoot.innerHTML = data.about.details.map((item, i) => `
-        <div class="detail-item" data-aos="fade-up" data-aos-delay="${100 + (i * 50)}">
+        <div class="detail-item">
           <i class="bi ${item.icon}"></i>
           <div class="detail-content">
             <span>${item.label}</span>
@@ -121,7 +121,7 @@
     const skillsGridRoot = document.getElementById('skills-grid-root');
     if (skillsGridRoot) {
       skillsGridRoot.innerHTML = data.skills.map((cat, i) => `
-        <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="${100 + (i * 100)}">
+        <div class="col-lg-3 col-md-6">
           <div class="skill-card">
             <div class="card-icon"><i class="bi ${cat.icon}"></i></div>
             <h3>${cat.category}</h3>
@@ -161,7 +161,7 @@
     const expRoot = document.getElementById('experience-root');
     if (expRoot) {
       expRoot.innerHTML = data.experience.map((job, i) => `
-        <div class="exp-card featured" data-aos="zoom-in" data-aos-delay="${300 + (i * 100)}">
+        <div class="exp-card featured">
           <div class="card-header">
             <i class="bi bi-briefcase"></i>
             <span class="period-badge">${job.period}</span>
@@ -337,6 +337,13 @@
    */
 
   function init() {
+    // Show all sections immediately; remove AOS attributes before any content renders.
+    document.querySelectorAll('[data-aos]').forEach((element) => {
+      element.getAttributeNames()
+        .filter((name) => name.startsWith('data-aos'))
+        .forEach((name) => element.removeAttribute(name));
+    });
+
     renderPortfolio();
 
     // Toggle Mobile Nav
@@ -381,9 +388,6 @@
 
     // Init Libraries
     window.addEventListener('load', () => {
-      // AOS
-      if (typeof AOS !== 'undefined') AOS.init({ duration: 600, easing: 'ease-in-out', once: true });
-      
       // Typed.js
       const typedEl = document.querySelector('.typed');
       if (typedEl && typeof Typed !== 'undefined') {
@@ -411,7 +415,6 @@
               isotopeItem.querySelector('.isotope-filters .filter-active').classList.remove('filter-active');
               this.classList.add('filter-active');
               initIsotope.arrange({ filter: this.getAttribute('data-filter') });
-              if (typeof AOS !== 'undefined') AOS.refresh();
             });
           });
         });
