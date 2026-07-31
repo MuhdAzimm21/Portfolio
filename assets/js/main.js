@@ -257,7 +257,7 @@
           <div><h4>Location</h4><p>${data.location}</p></div>
         </div>
         <div class="info-item d-flex align-items-start mb-3">
-          <div><h4>Email</h4><p>Contact me via form</p></div>
+          <div><h4>Email</h4><p>Contact me via form or at ${data.contact.email}</p></div>
         </div>
         <div class="info-item d-flex align-items-start">
           <div><h4>Call</h4><p>${data.contact.phone}</p></div>

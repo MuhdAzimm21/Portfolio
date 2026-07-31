@@ -9,6 +9,7 @@ window.portfolioData = {
   // --- Contact ---
   contact: {
     phone: "+60 13 572 4995",
+    email: "muhdazimm21@gmail.com",
     whatsapp: "https://wa.me/60135724995",
     linkedin: "https://www.linkedin.com/in/muhdazim21",
     github: "https://github.com/muhdazimm21"
