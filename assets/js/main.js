@@ -112,21 +112,19 @@
     return normalized.trim();
   }
 
-  async function getCertificateFiles() {
-    try {
-      const response = await fetch('assets/pdf/certificates/');
-      if (!response.ok) return [];
+  function getCertificateFiles() {
+    const data = window.portfolioData || {};
+    const certificateList = Array.isArray(data.certificates) ? data.certificates : [];
 
-      const html = await response.text();
-      const matches = [...html.matchAll(/href=["']([^"']+\.pdf)["']/gi)];
-
-      return matches
-        .map((match) => match[1])
-        .filter((value) => value && value.toLowerCase().endsWith('.pdf'))
-        .map((value) => value.replace(/\\/g, '/'));
-    } catch (error) {
-      return [];
-    }
+    return certificateList
+      .map((item) => {
+        if (!item || !item.pdf) return null;
+        return {
+          title: item.title || toCertificateTitleFromFilename(item.pdf.split('/').pop()),
+          pdf: item.pdf.replace(/\\/g, '/')
+        };
+      })
+      .filter(Boolean);
   }
 
   async function renderCertificateGrid() {
@@ -136,14 +134,7 @@
 
     if (!certRoot) return;
 
-    const pdfFiles = await getCertificateFiles();
-    const certificates = pdfFiles.map((file) => {
-      const fileName = file.split('/').pop();
-      return {
-        title: toCertificateTitleFromFilename(fileName),
-        pdf: file
-      };
-    });
+    const certificates = getCertificateFiles();
 
     if (certSummaryRoot) {
       certSummaryRoot.innerHTML = certificates.map((cert) => `

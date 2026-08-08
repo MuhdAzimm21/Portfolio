@@ -85,36 +85,16 @@ function toCertificateTitleFromFilename(filename) {
   return normalized.trim();
 }
 
-async function renderCvCertificateList() {
+function renderCvCertificateList() {
   const certRoot = document.getElementById('certificates');
   if (!certRoot) return;
 
-  try {
-    const response = await fetch('assets/pdf/certificates/');
-    if (!response.ok) {
-      throw new Error('Certificate directory request failed');
-    }
+  const data = window.portfolioData || {};
+  const fallbackCertificates = Array.isArray(data.certificates) ? data.certificates : [];
 
-    const html = await response.text();
-    const matches = [...html.matchAll(/href=["']([^"']+\.pdf)["']/gi)];
-    const pdfFiles = matches
-      .map((match) => match[1])
-      .filter((value) => value && value.toLowerCase().endsWith('.pdf'))
-      .map((value) => value.replace(/\\/g, '/'));
-
-    const titles = pdfFiles.map((file) => {
-      const fileName = file.split('/').pop();
-      return toCertificateTitleFromFilename(fileName);
-    });
-
-    certRoot.innerHTML = titles.map((title) => `<li>${title}</li>`).join('');
-  } catch (error) {
-    const data = window.portfolioData || {};
-    const fallbackCertificates = Array.isArray(data.certificates) ? data.certificates : [];
-    certRoot.innerHTML = fallbackCertificates
-      .map((c) => `<li>${c.title || ''}</li>`)
-      .join('');
-  }
+  certRoot.innerHTML = fallbackCertificates
+    .map((c) => `<li>${c.title || ''}</li>`)
+    .join('');
 }
 
 document.addEventListener("DOMContentLoaded", () => {
