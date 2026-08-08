@@ -21,6 +21,14 @@
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
+  <!-- PDF preview support -->
+  <script src="assets/vendor/pdfjs/pdf.min.js"></script>
+  <script>
+    if (window.pdfjsLib) {
+      window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'assets/vendor/pdfjs/pdf.worker.min.js';
+    }
+  </script>
+
   <!-- Styles CSS File -->
   <link href="assets/css/styles.css" rel="stylesheet">
   
@@ -188,7 +196,6 @@
       <div class="container section-title" data-aos="fade-up">
         <span class="subtitle">Certificates</span>
         <h2>List of Certificates</h2>
-        <p>Click to view full certificate.</p>
       </div>
       <div class="container" data-aos="fade-up" data-aos-delay="30">
         <div class="row g-3" id="certificates-root"></div>

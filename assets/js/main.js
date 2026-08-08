@@ -58,6 +58,135 @@
 
   /**
    * --------------------------------------------------------------------------
+   * PDF preview support
+   * --------------------------------------------------------------------------
+   */
+
+  function renderPdfPreviewIntoImage(pdfUrl, imgElement) {
+    if (!pdfUrl || !imgElement || !window.pdfjsLib) return;
+
+    const loadingTask = window.pdfjsLib.getDocument(pdfUrl);
+
+    loadingTask.promise.then((pdf) => pdf.getPage(1)).then((page) => {
+      const pageScale = 1.75;
+      const viewport = page.getViewport({ scale: pageScale });
+      const canvas = document.createElement('canvas');
+      const context = canvas.getContext('2d');
+
+      canvas.width = Math.max(1, Math.round(viewport.width));
+      canvas.height = Math.max(1, Math.round(viewport.height));
+
+      return page.render({
+        canvasContext: context,
+        viewport: viewport
+      }).promise.then(() => canvas.toDataURL('image/png'));
+    }).then((dataUrl) => {
+      const certificateTitle = imgElement.getAttribute('data-cert-title') || '';
+      imgElement.src = dataUrl;
+      imgElement.alt = certificateTitle;
+
+      const certificateAnchor = imgElement.closest('a.certificate-image-link');
+      if (certificateAnchor) {
+        certificateAnchor.href = dataUrl;
+        certificateAnchor.setAttribute('data-title', certificateTitle);
+        certificateAnchor.setAttribute('data-type', 'image');
+        certificateAnchor.setAttribute('data-gallery', 'certificate-gallery');
+      }
+    }).catch(() => {
+      const certificateAnchor = imgElement.closest('a.certificate-image-link');
+      if (certificateAnchor) {
+        certificateAnchor.href = imgElement.getAttribute('data-cert-pdf') || '#';
+        certificateAnchor.setAttribute('data-type', 'iframe');
+      }
+      imgElement.src = '';
+      imgElement.alt = 'Certificate preview unavailable';
+    });
+  }
+
+  function toCertificateTitleFromFilename(filename) {
+    const withoutExtension = filename.replace(/\.pdf$/i, '');
+    const normalized = withoutExtension
+      .replace(/[-_]+/g, ' ')
+      .replace(/\b\w/g, (ch) => ch.toUpperCase());
+
+    return normalized.trim();
+  }
+
+  async function getCertificateFiles() {
+    try {
+      const response = await fetch('assets/pdf/certificates/');
+      if (!response.ok) return [];
+
+      const html = await response.text();
+      const matches = [...html.matchAll(/href=["']([^"']+\.pdf)["']/gi)];
+
+      return matches
+        .map((match) => match[1])
+        .filter((value) => value && value.toLowerCase().endsWith('.pdf'))
+        .map((value) => value.replace(/\\/g, '/'));
+    } catch (error) {
+      return [];
+    }
+  }
+
+  async function renderCertificateGrid() {
+    const data = window.portfolioData || {};
+    const certRoot = document.getElementById('certificates-root');
+    const certSummaryRoot = document.getElementById('cert-summary-root');
+
+    if (!certRoot) return;
+
+    const pdfFiles = await getCertificateFiles();
+    const certificates = pdfFiles.map((file) => {
+      const fileName = file.split('/').pop();
+      return {
+        title: toCertificateTitleFromFilename(fileName),
+        pdf: file
+      };
+    });
+
+    if (certSummaryRoot) {
+      certSummaryRoot.innerHTML = certificates.map((cert) => `
+        <div class="cert-item-summary mb-3 d-flex align-items-center p-3" style="background: var(--surface-color); border-radius: 12px; border-left: 4px solid var(--accent-color);">
+          <div class="cert-icon me-3">
+            <i class="bi bi-award text-accent" style="font-size: 1.5rem; color: var(--accent-color);"></i>
+          </div>
+          <div class="cert-text">
+            <h5 class="mb-0" style="font-size: 1rem; font-weight: 600;">${cert.title}</h5>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    const certCount = document.getElementById('cert-count');
+    if (certCount) certCount.textContent = String(certificates.length);
+
+    certRoot.innerHTML = certificates.map((c) => `
+      <div class="col-lg-4 col-md-6">
+        <div class="certificate-item">
+          <div class="certificate-image-link">
+            <div class="certificate-image-shell">
+              <img src="" class="img-fluid certificate-preview" alt="${c.title}" data-cert-pdf="${c.pdf}" data-cert-title="${c.title}">
+            </div>
+            <div class="certificate-info">
+              <h4 class="certificate-title">${c.title}</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    `).join('');
+
+    const pdfImages = certRoot.querySelectorAll('[data-cert-pdf]');
+    pdfImages.forEach((img) => {
+      const pdfPath = img.getAttribute('data-cert-pdf');
+      if (pdfPath) {
+        renderPdfPreviewIntoImage(pdfPath, img);
+      }
+    });
+  }
+
+  /**
+   * --------------------------------------------------------------------------
    * Core Rendering Logic
    * --------------------------------------------------------------------------
    */
@@ -234,11 +363,11 @@
     // --- 5. Certificates Section ---
     const certRoot = document.getElementById('certificates-root');
     if (certRoot) {
-      certRoot.innerHTML = data.certificates.map(c => `
+      certRoot.innerHTML = data.certificates.map((c) => `
         <div class="col-lg-4 col-md-6">
           <div class="certificate-item">
-            <a href="${c.image}" class="glightbox" data-gallery="certificate-gallery">
-              <img src="${c.image}" class="img-fluid" alt="${c.title}">
+            <a href="${c.pdf}" class="glightbox certificate-pdf-anchor" data-gallery="certificate-gallery" data-type="iframe">
+              <img src="data:image/svg+xml,${encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='340' height='250' viewBox='0 0 340 250'><rect width='340' height='250' fill='#111827'/><rect x='10' y='10' width='320' height='230' rx='12' fill='none' stroke='#1fbf88' stroke-width='2'/><text x='170' y='118' font-size='20' font-family='Arial' text-anchor='middle' fill='#ffffff'>Certificate</text><text x='170' y='150' font-size='12' font-family='Arial' text-anchor='middle' fill='#a7f3d0'>Preview</text></svg>`)}" class="img-fluid certificate-preview" alt="${c.title}" data-cert-pdf="${c.pdf}">
               <div class="certificate-info">
                 <h4>${c.title}</h4>
                 <small>${c.issuer}</small>
@@ -247,6 +376,14 @@
           </div>
         </div>
       `).join('');
+
+      const pdfImages = certRoot.querySelectorAll('[data-cert-pdf]');
+      pdfImages.forEach((img) => {
+        const pdfPath = img.getAttribute('data-cert-pdf');
+        if (pdfPath) {
+          renderPdfPreviewIntoImage(pdfPath, img);
+        }
+      });
     }
 
     // --- 6. Contact Section ---
@@ -345,6 +482,7 @@
     });
 
     renderPortfolio();
+    renderCertificateGrid();
 
     // Toggle Mobile Nav
     const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle');

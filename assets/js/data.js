@@ -343,41 +343,5 @@ window.portfolioData = {
   ],
 
   // --- Certificates ---
-  certificates: [
-    {
-      title: "Google Cybersecurity Professional Certificate",
-      issuer: "Coursera | Google",
-      image: "assets/img/certificates/cert-1.png"
-    },
-    {
-      title: "K-Youth Development Programme 2025",
-      issuer: "K-Youth",
-      image: "assets/img/certificates/cert-2.png"
-    },
-    {
-      title: "AI For MY Future",
-      issuer: "Copilot | AI",
-      image: "assets/img/certificates/cert-3.png"
-    },
-    {
-      title: "CGM Academy for Youth",
-      issuer: "Climate Governance Malaysia",
-      image: "assets/img/certificates/cert-4.png"
-    },
-    {
-      title: "Career Essentials in Sustainable Tech",
-      issuer: "Microsoft | LinkedIn",
-      image: "assets/img/certificates/cert-5.png"
-    },
-    {
-      title: "Digital Literacy Learning Pathway",
-      issuer: "Digital Literacy",
-      image: "assets/img/certificates/cert-6.png"
-    },
-    {
-      title: "Professional Soft Skills",
-      issuer: "Soft Skills",
-      image: "assets/img/certificates/cert-7.png"
-    }
-  ]
+  certificates: []
 };
