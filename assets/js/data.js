@@ -348,6 +348,14 @@ window.portfolioData = {
       title: 'BMC Helix Digital Workplace 22.x Fundamentals Administering for Advanced License',
       pdf: 'assets/pdf/certificates/BMC-Helix-Digital-Workplace-22.x-Fundamentals-Administering-for-Advanced-License.pdf'
     },
+        {
+      title: 'Google Cybersecurity Professional Certificate',
+      pdf: 'assets/pdf/certificates/google-cybersecurity-professional-certificate.pdf'
+    },
+        {
+      title: 'K-Youth Development Programme 2025 Certificate Of Completion',
+      pdf: 'assets/pdf/certificates/Certificate-Of-Completion-K-Youth-Development-Programme-2025.pdf'
+    },
     {
       title: 'AI For MY Future Certificate Of Completion',
       pdf: 'assets/pdf/certificates/Certificate-Of-Completion-AI-For-MY-Future.pdf'
@@ -365,16 +373,8 @@ window.portfolioData = {
       pdf: 'assets/pdf/certificates/Certificate-Of-Completion-Digital-Literacy-And-Productivity-Learning-Pathway.pdf'
     },
     {
-      title: 'K-Youth Development Programme 2025 Certificate Of Completion',
-      pdf: 'assets/pdf/certificates/Certificate-Of-Completion-K-Youth-Development-Programme-2025.pdf'
-    },
-    {
       title: 'Professional Soft Skills Learning Pathway Certificate Of Completion',
       pdf: 'assets/pdf/certificates/Certificate-Of-Completion-Professional-Soft-Skills-Learning-Pathway.pdf'
-    },
-    {
-      title: 'Google Cybersecurity Professional Certificate',
-      pdf: 'assets/pdf/certificates/google-cybersecurity-professional-certificate.pdf'
     }
   ]
 };
